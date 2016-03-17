@@ -1,41 +1,42 @@
-# PlumbusHttp
+![plumbus_http: An HTTP driver for plumbus_http](https://raw.githubusercontent.com/sotownsend/plumbus_http/master/docs/images/banner.png)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/plumbus_http`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/iarrogant.svg)](http://badge.fury.io/rb/plumbus_http)
+[![Build Status](https://travis-ci.org/sotownsend/plumbus_http.svg)](https://travis-ci.org/sotownsend/plumbus_http)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sotownsend/plumbus_http/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/sotownsend/plumbus_http/blob/master/LICENSE)
 
-TODO: Delete this and the text above, and describe your gem
+# What is this?
+
+Plubus HTTP is a driver for [Plumbus](httsp://github.com/sotownsend/plumbus).
 
 ## Installation
+Run `gem install plumbus_http`
 
-Add this line to your application's Gemfile:
-
+## Configuration
+Configure is handled through a ruby file. This file contains a listing of `ports` which are just driver instances that are declared on either the request or response side.
 ```ruby
-gem 'plumbus_http'
+port(:request, 'plumbus_http') do
+  #Driver specific config
+end
+
+port(:response, 'plumbus_http') do
+  #Driver specific config
+end
 ```
 
-And then execute:
+---
 
-    $ bundle
+## FAQ
 
-Or install it yourself as:
+### When should I use plumbus?
 
-    $ gem install plumbus_http
+Todo
 
-## Usage
+### Creator
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/plumbus_http. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+- [Seo Townsend](http://github.com/sotownsend) ([@seotownsend](https://twitter.com/seotownsend))
 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+plumbus is released under the MIT license. See LICENSE for details.
