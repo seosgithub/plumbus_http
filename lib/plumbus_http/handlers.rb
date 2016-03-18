@@ -1,10 +1,11 @@
+$port = 3000
 module PlumbusHttp
   module PlumbusHandlers
     attr_accessor :supported_actions
 
     def config &block
       dsl = ConfigDSL.new &block
-      @supported_actions = dsl.supported_actions
+      @supported_actions = [:_test]
 
       @server = Server.new(self)
       @server.start
@@ -12,17 +13,18 @@ module PlumbusHttp
 
     #Forward a message to the block for a sid
     def handle_message sid, action, payload
-      @_spec_received_messages ||= []
-      @_spec_received_messages << {
-        :sid => sid,
-        :action => action,
-        :payload => payload
-      }
+      $stderr.puts "GOT MESSAGE!!! #{sid.inspect}"
+      if action == 'lol'
+        @server.send sid, "<h1>Hello world!</h1> #{payload}"
+      else
+        emit_message sid, 'lol', payload
+      end
     end
 
     #Forward a signal, like disconnection
     def handle_signal name, info
-      puts "#{name} #{info}"
+      puts "signal #{name} #{info}"
+      @server.send info[:sid], name
     end
 
     def _spec_expand_and_invalidate_supported_actions name
